@@ -48,7 +48,10 @@ echo " "
 echo "Raspberry Pi wil reboot after completion."
 echo " "
 echo " "
+
 sleep 5
+export http_proxy=http://proxy.phl.sap.corp:8080
+export https_proxy=http://proxy.phl.sap.corp:8080
 
 echo " "
 echo "Check for internet connectivity..."
@@ -82,12 +85,12 @@ sudo apt-get install python3-rpi.gpio -y
 sudo pip install -U RPi.GPIO
 echo "Dependencies installed"
 
-if [ -d wiringPi ]; then
-    cd wiringPi
+if [ -d WiringPi ]; then
+    cd WiringPi
     git pull
 else
-    git clone git://git.drogon.net/wiringPi
-    cd wiringPi
+    git clone https://github.com/WiringPi/WiringPi.git
+    cd WiringPi
 fi
 
 ./build
